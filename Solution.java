@@ -12,12 +12,13 @@ public class Solution {
     // Complete the sockMerchant function below.
     static int sockMerchant(int n, int[] ar) {
         
+        
         int pairs = 0;
-        int pairs = 0;
-        for ( int i = 0; i < n;i+=2){ 
+       for ( int i = 0; i < n;i++){ 
            for ( int j = i+1; j<n; j++){
-               if ( ar[i]==ar[j]){
+               if (ar[i]==ar[j]){
                    pairs+=1;
+                   i++;
                    break;
                }
            } 
