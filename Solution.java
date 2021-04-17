@@ -13,15 +13,15 @@ public class Solution {
     static int sockMerchant(int n, int[] ar) {
         
         int pairs = 0;
-        for ( int i = 0; i < n-1;i++){
-           
-                if (i+1 != n){
-                    if ( ar[i]== ar[i+1]){
-                    pairs+=1;                    
-                    }
-                }
-          }
-        return pairs;
+        int pairs = 0;
+        for ( int i = 0; i < n;i+=2){ 
+           for ( int j = i+1; j<n; j++){
+               if ( ar[i]==ar[j]){
+                   pairs+=1;
+                   break;
+               }
+           } 
+   return pairs;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
