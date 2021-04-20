@@ -6,11 +6,30 @@ public class Solution {
         String smallest = "";
         String largest = "";
         
+        
+        int end = k;
+       ArrayList <String>temps = new ArrayList<>();
+       int i = 0;
+        while (i+end<=s.length()){
+            temps.add(s.substring(i,i+end));
+            i++;
+        }
+        
+        Collections.sort(temps);
+       
+        smallest = temps.get(0);
+        largest = temps.get(temps.size()-1);
+                  
+              return smallest + "\n" + largest;
+        }
+        
+        
+        
         // Complete the function
         // 'smallest' must be the lexicographically smallest substring of length 'k'
         // 'largest' must be the lexicographically largest substring of length 'k'
         
-        return smallest + "\n" + largest;
+      
     }
 
 
