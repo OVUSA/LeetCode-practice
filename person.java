@@ -34,27 +34,27 @@ class Student extends Person{
         }
         average = average/testScores.length;
         
-        if (average<40){
+       if (average<40){
             return 'T';
-        }else if (70<= average || average <80){
+        }else if (70<= average && average <80){
             return 'A';
-        }else if (40<= average || average <55){
+        }else if (40<= average && average <55){
          
             return 'D';
-        }else if (55<= average || average <70){
+        }else if (55<= average && average <70){
             return 'P';
         
             
-        }else if (80<= average || average <90){
+        }else if (80<= average && average <90){
             return 'E';
         
         
         }
-        else if (90<= average || average <100)
+        else if (90<= average && average <100)
  
         return 'O';  
-        
-        return 'X';
+    
+    return 'O';
     }
 }
 
