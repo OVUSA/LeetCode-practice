@@ -3,8 +3,9 @@ import java.util.Scanner;
 public class Solution {
 
 static boolean isAnagram(String string1, String string2) {
-        String workingCopy1 = removeJunk(string1);
-        String workingCopy2 = removeJunk(string2);
+        String workingCopy1 = string1.replaceAll("([ , !,@])", "");
+        String workingCopy2 = string2.replaceAll("([ , !,@])", "");
+
 
         workingCopy1 = workingCopy1.toLowerCase();
         workingCopy2 = workingCopy2.toLowerCase();
@@ -15,7 +16,7 @@ static boolean isAnagram(String string1, String string2) {
         return workingCopy1.equals(workingCopy2);
     }
 
-    protected static String removeJunk(String string) {
+  /*  protected static String removeJunk(String string) {
         int i, len = string.length();
         StringBuilder dest = new StringBuilder(len);
           char c;
@@ -28,7 +29,7 @@ static boolean isAnagram(String string1, String string2) {
         }
 
         return dest.toString();
-    }
+    }*/
 
     protected static String sort(String string) {
         char[] charArray = string.toCharArray();
