@@ -2,30 +2,40 @@ import java.util.Scanner;
 
 public class Solution {
 
-static boolean isAnagram(String a, String b) {
-        a = a.toLowerCase();
-        b = b.toLowerCase();
-        char[] second = new char[b.length()];
-        char [] first = new char[a.length()];
-        for ( int i = 0 ; i < a.length();i++){
-            first.add(a.charAt(i));
-            second.add(b.charAt(i));
-          
+static boolean isAnagram(String string1, String string2) {
+        String workingCopy1 = removeJunk(string1);
+        String workingCopy2 = removeJunk(string2);
+
+        workingCopy1 = workingCopy1.toLowerCase();
+        workingCopy2 = workingCopy2.toLowerCase();
+
+        workingCopy1 = sort(workingCopy1);
+        workingCopy2 = sort(workingCopy2);
+
+        return workingCopy1.equals(workingCopy2);
+    }
+
+    protected static String removeJunk(String string) {
+        int i, len = string.length();
+        StringBuilder dest = new StringBuilder(len);
+          char c;
+
+        for (i = (len - 1); i >= 0; i--) {
+            c = string.charAt(i);
+            if (Character.isLetter(c)) {
+                dest.append(c);
+            }
         }
-      int match= 0;
-       
-       for ( int j= 0; i < a.length(); j ++){
-           for ( int i = 0; i < b.length(); i++){
-               if (a(j)== b(i)){
-                   match++;
-                   second.remove(b(i));
-                   break;
-               }
-           }
-       }
-       
-    return (match == a.length() ? true:false);
-    
+
+        return dest.toString();
+    }
+
+    protected static String sort(String string) {
+        char[] charArray = string.toCharArray();
+
+        java.util.Arrays.sort(charArray);
+
+        return new String(charArray);
     }
 
   public static void main(String[] args) {
