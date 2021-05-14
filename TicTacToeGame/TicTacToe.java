@@ -70,19 +70,20 @@ public class TicTacToe {
 	}
 	//check if our spot within the range
 	public boolean withinRange(int spot) {
-		return (spot > 0 || spot < board.length+1)? true: false;
+		return (spot > 0 || spot < board.length)? true: false;
 		
 	}
 	
 	// check if spot is taken or empty
 	public boolean isSpotTaken(int spot){
-		return board[spot]== '-'? false: true;
+		return board[spot-1]== '-'? false: true;
 	}
 	
 	public boolean isThereWinner() {
-		boolean diagonalsAndMiddles = rightDi()|| leftDi() || middleRow()|| secondCol();
-		boolean parallelTop = topRow() || leftCol();
-		boolean parallelBottom = bottomRow() || rightCol();
+		boolean diagonalsAndMiddles = (rightDi()|| leftDi() )|| (middleRow()|| secondCol())&& board [4]!= '-';
+		boolean parallelTop = (topRow() || leftCol()) && board [0]!= '-';
+		
+		boolean parallelBottom = (bottomRow() || rightCol())&& board [8]!='-';
 		if (diagonalsAndMiddles) {
 			this.winner = board[4];
 			
@@ -92,18 +93,19 @@ public class TicTacToe {
 		}else if (parallelBottom) {
 			this.winner = board[8];
 		}
-			return diagonalsAndMiddles || parallelTop || parallelBottom;
+			return (diagonalsAndMiddles || parallelTop || parallelBottom)? true: false;
 	}
+	
 	public boolean rightDi() {
-		return (board[0]== board [4] && board [4]== board [8])? true: false;
+		return (board[0]== board [4] && board [4]== board [8])&& board [4]!='-'? true: false;
 	}
 	
 	public boolean leftDi() {
-		return (board[2]== board[4]&&  board [4]==board [6])? true: false;
+		return (board[2]== board[4]&&  board [4]==board [6])&& board [4]!='-'? true: false;
 	}
 	
 	public boolean middleRow() {
-		return (board[3]==board [4]&& board [4]== board [5])? true: false;
+		return (board[3]==board [4]&& board [4]== board [5])&& board [4]!='-'? true: false;
 	}
 	public boolean secondCol() {
 		return (board[1]== board [4]&& board [4]== board [7])? true: false;
