@@ -78,16 +78,26 @@ public class TicTacToe {
 	
 	public boolean isThereWinner() {
 		boolean diagonalsAndMiddles = rightDi()|| leftDi() || middleRow()|| secondCol();
-		boolean paralleTop = topRow() || leftRow() && board[0]!= '-';
-				boolean parallelBottom = 
+		boolean parallelTop = topRow() || leftCol();
+		boolean parallelBottom = bottomRow() || rightCol();
+		if (diagonalsAndMiddles) {
+			this.winner = board[4];
+			
+		}else if (parallelTop) {
+			this.winner = board[0];
+			
+		}else if (parallelBottom) {
+			this.winner = board[8];
+		}
+			return diagonalsAndMiddles || parallelTop || parallelBottom;
 	}
 	
 	public boolean rightDi() {
-		return (board[0]== 'X'&& board [4]=='X'&& board [8]=='X')||(board[0]== '0'&& board [4]=='0'&& board [8]=='0')? true: false;
+		return (board[0]== board [4] && board [4]== board [8])? true: false;
 	}
 	
 	public boolean leftDi() {
-		return (board[2]== 'X'&& board [4]=='X'&& board [6]=='X')||(board[2]== '0'&& board [4]=='0'&& board [6]=='0')? true: false;
+		return (board[2]== board[4]&&  board [4]==board [6])? true: false;
 	}
 	
 	public boolean middleRow() {
