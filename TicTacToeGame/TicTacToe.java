@@ -94,7 +94,6 @@ public class TicTacToe {
 		}
 			return diagonalsAndMiddles || parallelTop || parallelBottom;
 	}
-	
 	public boolean rightDi() {
 		return (board[0]== board [4] && board [4]== board [8])? true: false;
 	}
@@ -113,16 +112,15 @@ public class TicTacToe {
 		return (board[0]== board [1] &&  board [1]== board [2])? true: false;
 	}
 	public boolean leftCol() {
-		return (board[0]== 'X'&& board [3]=='X'&& board [6]=='X')||(board[0]== '0'&& board [3]=='0'&& board [6]=='0')? true: false;
+		return (board[0]== board [3]&& board [3]== board [6])? true: false;
 	}
 	
 	public boolean bottomRow() {
-		return (board[6]== 'X'&& board [7]=='X'&& board [8]=='X')||(board[6]== '0'&& board [7]=='0'&& board [8]=='0')? true: false;
+		return (board[6]== board [7] && board [7]==board [8])? true: false;
 	}
 	public boolean rightCol() {
-		return (board[2]== 'X'&& board [5]=='X'&& board [8]=='X')||(board[2]== '0'&& board [5]=='0'&& board [8]=='0')? true: false;
+		return (board[2]== board[5] && board [5]== board [8])? true: false;
 	}
-	
 	// check if there is any available spot
 	public boolean isBoardFilled() {
 		for ( int i = 0; i < board.length;i++) {
@@ -146,9 +144,8 @@ public class TicTacToe {
 	
 	
 	
-	
 	// board for user
-	public void displayBoard() {
+	public static void displayIndexBoard() {
 		for ( int i = 1; i <=9 ; i++) {
 			System.out.print("| "+ i+ " ");
 			
@@ -161,6 +158,18 @@ public class TicTacToe {
 		System.out.print("|");
 				
 	}
+	
+	public void printBoard() {
+	for ( int i = 1; i <=9 ; i++) {
+	if (i%3 ==0 && i!=0) {
+		System.out.println();
+		System.out.println("-------------");
+	}
+		System.out.println("| "+ board[i]);	
+	}
+	System.out.println();	
+}
+	
 	
 
 	
