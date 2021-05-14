@@ -108,6 +108,30 @@ public class TicTacToe {
 	}
 	
 	
+	// check if there is any available spot
+	public boolean isBoardFilled() {
+		for ( int i = 0; i < board.length;i++) {
+			if (board[i]=='-') {
+				return false;
+			}
+		}
+		return true;
+	}
+	 public String gameOver() {
+		 boolean didSomeoneWin = isThereWinner();
+		 if (didSomeoneWin) {
+			 return "We have a winner! Winner is "+ this.winner + "'s";
+					 
+		 }else if ( isBoardFilled()) {
+			 return "Draw, Game Over";
+		 } else {
+			 return "Game is NOT OVER";
+		 }
+	 }
+	
+	
+	
+	
 	// board for user
 	public void displayBoard() {
 		for ( int i = 1; i <=9 ; i++) {
